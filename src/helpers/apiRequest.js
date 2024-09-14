@@ -6,13 +6,15 @@ export const apiRequest = async (url, method, data = null) => {
         const options = {
             method,
             url,
-            data
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data : data || {}
         }
 
         const response = await axios(options)
         return response.data
     } catch (error) {
-        console.log(error)
         if (error.response) {
             throw {
                 status: error.response.status,

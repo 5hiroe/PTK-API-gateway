@@ -21,4 +21,45 @@ export default class ClientService {
     async getAll () {
         return await apiRequest(`${clientApiUri}/`, 'GET')
     }
+
+    /**
+     * Get client by id
+     * 
+     * @param {ObjectId} id
+     * @returns
+     */
+    async getById ({ clientId }) {
+        return await apiRequest(`${clientApiUri}/${clientId}`, 'GET')
+    }
+
+    /**
+     * Create client
+     * 
+     * @param {Object} fields
+     * @returns
+     */
+    async create ({ fields }) {
+        return await apiRequest(`${clientApiUri}/`, 'POST', { fields })
+    }
+
+    /**
+     * Update client
+     * 
+     * @param {ObjectId} clientId
+     * @param {Object} fields
+     * @returns
+     */
+    async update ({ clientId, fields }) {
+        return await apiRequest(`${clientApiUri}/${clientId}`, 'PUT', { fields })
+    }
+
+    /**
+     * Delete client
+     * 
+     * @param {ObjectId} clientId
+     * @returns
+     */
+    async remove ({ clientId }) {
+        return await apiRequest(`${clientApiUri}/${clientId}`, 'DELETE')
+    }
 }
