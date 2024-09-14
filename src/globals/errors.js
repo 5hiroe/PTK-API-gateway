@@ -71,3 +71,21 @@ export class Conflict extends HttpError {
     })
   }
 }
+
+export class ServiceUnavailable extends HttpError {
+  constructor (message = 'Service indisponible.') {
+    super({
+      message,
+      status: 503
+    })
+  }
+}
+
+export class InternalServerError extends HttpError {
+  constructor (message = 'Erreur interne.') {
+    super({
+      message,
+      status: 500
+    })
+  }
+}

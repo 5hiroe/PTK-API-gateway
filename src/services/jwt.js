@@ -34,7 +34,7 @@ export default class JWTService {
      * @returns
      */
     contain (jwt) {
-        for (const active in this.jwts) {
+        for (const active of this.jwts) {
             if (active.jwt === jwt) {
                 return true
             }
