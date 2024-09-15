@@ -49,11 +49,11 @@ export default class AuthService {
         // The error message is the same for security reasons.
         // It is important to not give any information about the existence of the email address.
         if (!user) {
-            throw new Forbidden('Identifiant ou mot de passe incorrect.mail')
+            throw new Forbidden('Identifiant ou mot de passe incorrect.')
         }
         const decryptedPassword = decrypt(user.password)
         if (password !== decryptedPassword) {
-            throw new Forbidden('Identifiant ou mot de passe incorrect.mdp')
+            throw new Forbidden('Identifiant ou mot de passe incorrect.')
         }
         const jwt = JWTServiceInstance.generate({ id: user._id })
         return jwt
