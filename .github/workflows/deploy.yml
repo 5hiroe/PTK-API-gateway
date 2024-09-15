@@ -35,3 +35,4 @@ jobs:
         key: ${{ secrets.VPS_SSH_KEY }}
         script: |
           kubectl set image deployment/gateway-deployment gateway=${{ secrets.DOCKER_USERNAME }}/ptk-gateway-api:latest
+          kubectl rollout restart deployment/gateway-deployment
