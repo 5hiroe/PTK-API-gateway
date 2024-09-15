@@ -19,3 +19,20 @@ export const client = Joi.object({
     }).required(),
     orders: Joi.array().items(Joi.string().max(100)).required()
 })
+
+export const order = Joi.object({
+    date: Joi.date().format("DD/MM/YYYY").required(),
+    status: Joi.string().max(100).required(),
+    totalAmount: Joi.number().required(),
+    items: Joi.array().items(Joi.object({
+        product_id: Joi.string().max(100).required(),
+        quantity: Joi.number().required(),
+    })).required()
+})
+
+export const product = Joi.object({
+    name: Joi.string().max(100).required(),
+    description: Joi.string().max(100).required(),
+    price: Joi.number().required(),
+    stockQuantity: Joi.number().required(),
+})
