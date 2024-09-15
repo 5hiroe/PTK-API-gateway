@@ -27,4 +27,8 @@ jobs:
         docker build -t ${{ secrets.DOCKER_USERNAME }}/ptk-gateway-api:latest .
         docker push ${{ secrets.DOCKER_USERNAME }}/ptk-gateway-api:latest
 
-    
+    - name: Deploy to Kubernetes
+      env:
+        KUBECONFIG: ${{ secrets.KUBECONFIG }}
+      run: |
+        kubectl set image deployment/gateway-deployment gateway-container=${{ secrets.DOCKER_USERNAME }}/api-gateway:latest
