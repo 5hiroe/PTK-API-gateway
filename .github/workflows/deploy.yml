@@ -27,12 +27,6 @@ jobs:
         docker build -t ${{ secrets.DOCKER_USERNAME }}/ptk-gateway-api:latest .
         docker push ${{ secrets.DOCKER_USERNAME }}/ptk-gateway-api:latest
 
-    - name: Echo secrets
-      run: |
-        echo ${{ secrets.VPS_HOST }}
-        echo ${{ secrets.VPS_USER }}
-        echo ${{ secrets.VPS_SSH_KEY }}
-
     - name: SSH and Deploy to Kubernetes
       uses: appleboy/ssh-action@v0.1.4
       with:
