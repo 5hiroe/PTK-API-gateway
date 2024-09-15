@@ -21,7 +21,7 @@ export const client = Joi.object({
 })
 
 export const order = Joi.object({
-    date: Joi.date().format("DD/MM/YYYY").required(),
+    date: Joi.date().required(),
     status: Joi.string().max(100).required(),
     totalAmount: Joi.number().required(),
     items: Joi.array().items(Joi.object({
