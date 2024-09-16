@@ -7,10 +7,6 @@
     "start": "node -r dotenv/config ./src/app.js",
     "test": "mocha --require @babel/register ./tests/**/*.mjs"
   },
-  "mocha": {
-    "recursive": true,
-    "spec": "./tests/**/*.mjs"
-  },
   "nyc": {
     "include": [
       "src/**/*.js"
