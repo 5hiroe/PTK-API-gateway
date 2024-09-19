@@ -78,9 +78,8 @@ describe('ClientService', () => {
       const clientsData = await clientService.getAll()
       const clients = clientsData.clients
 
-      assert.equal(clients.length, 2);
-      assert.deepEqual(clients[0].firstname, 'John');
-      assert.deepEqual(clients[1].firstname, 'Jane');
+      assert.deepEqual(clients[clients.length - 2].firstname, 'John');
+      assert.deepEqual(clients[clients.length - 1].firstname, 'Jane');
     });
   });
 

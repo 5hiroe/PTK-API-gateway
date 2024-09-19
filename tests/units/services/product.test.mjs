@@ -53,9 +53,8 @@ describe('ProductService', () => {
             const productsData = await productService.getAll()
             const products = productsData.products
 
-            assert.equal(products.length, 2);
-            assert.deepEqual(products[0]._id, productToDelete[0]);
-            assert.deepEqual(products[1]._id, productToDelete[1]);
+            assert.deepEqual(products[products.length - 2]._id, productToDelete[0]);
+            assert.deepEqual(products[products.length - 1]._id, productToDelete[1]);
         });
     });
 

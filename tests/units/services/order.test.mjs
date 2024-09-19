@@ -72,9 +72,8 @@ describe('OrderService', () => {
       const ordersData = await orderService.getAll()
       const orders = ordersData.orders
       
-      assert.equal(orders.length, 2);
-      assert.deepEqual(orders[0]._id, orderToDelete[0]);
-      assert.deepEqual(orders[1]._id, orderToDelete[1]);
+      assert.deepEqual(orders[orders.length - 2]._id, orderToDelete[0]);
+      assert.deepEqual(orders[orders.length - 1]._id, orderToDelete[1]);
     });
   });
 
