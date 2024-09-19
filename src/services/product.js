@@ -1,5 +1,7 @@
 import { apiRequest } from '../helpers/apiRequest.js'
-const productApiUri = process.env.PRODUCT_API_URI
+const productApiUri = process.env.NODE_ENV === 'test' 
+        ? process.env.PRODUCT_API_URI_TEST 
+        : process.env.PRODUCT_API_URI;
 
 export default class ProductService {
     /**

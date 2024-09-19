@@ -1,11 +1,15 @@
 import { apiRequest } from '../helpers/apiRequest.js'
-const clientApiUri = process.env.CLIENT_API_URI
+const clientApiUri = process.env.NODE_ENV === 'test' 
+        ? process.env.CLIENT_API_URI_TEST 
+        : process.env.CLIENT_API_URI;
 
 export default class ClientService {
+    
     /**
      * ClientService is a singleton
-     */
-    constructor () {
+    */
+   constructor () {
+        console.log(clientApiUri);
         if (ClientService.instance instanceof ClientService) {
             return ClientService.instance
         }

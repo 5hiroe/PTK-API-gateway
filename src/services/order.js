@@ -1,5 +1,7 @@
 import { apiRequest } from '../helpers/apiRequest.js'
-const orderApiUri = process.env.ORDER_API_URI
+const orderApiUri = process.env.NODE_ENV === 'test' 
+        ? process.env.ORDER_API_URI_TEST 
+        : process.env.ORDER_API_URI;
 
 export default class OrderService {
     /**
