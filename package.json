@@ -39,7 +39,9 @@
     "joi": "^17.13.3",
     "joi-phone-number": "^5.1.1",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.4.4"
+    "mongoose": "^8.4.4",
+    "swagger-autogen": "^2.23.7",
+    "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
