@@ -9,7 +9,6 @@ export default class ClientService {
      * ClientService is a singleton
     */
    constructor () {
-        console.log(clientApiUri);
         if (ClientService.instance instanceof ClientService) {
             return ClientService.instance
         }
