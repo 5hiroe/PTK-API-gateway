@@ -1,0 +1,588 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Paye ton kawa",
+    "description": "API pour la gestion des clients, produits et commandes de Paye ton kawa",
+    "version": "1.0.0"
+  },
+  "host": "localhost:3004",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/login": {
+      "post": {
+        "description": "Authentification de l'utilisateur",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "example": "user@example.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "password123"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Connexion réussie"
+          }
+        }
+      }
+    },
+    "/logout": {
+      "post": {
+        "description": "Déconnexion de l'utilisateur",
+        "responses": {
+          "200": {
+            "description": "Déconnexion réussie"
+          }
+        }
+      }
+    },
+    "/signup": {
+      "post": {
+        "description": "Inscription d'un nouvel utilisateur",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "example": "newuser@example.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "newpassword123"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Inscription réussie"
+          }
+        }
+      }
+    },
+    "/update-password": {
+      "post": {
+        "description": "Mise à jour du mot de passe",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "example": "user@example.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "oldpassword"
+                },
+                "newPassword": {
+                  "type": "string",
+                  "example": "newpassword123"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Mot de passe mis à jour avec succès"
+          }
+        }
+      }
+    },
+    "/client/": {
+      "get": {
+        "description": "Récupérer la liste des clients",
+        "responses": {
+          "200": {
+            "description": "Liste des clients récupérée avec succès"
+          }
+        }
+      },
+      "post": {
+        "description": "Créer un nouveau client",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "fields": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string",
+                      "example": "client1@example.com"
+                    },
+                    "phone": {
+                      "type": "string",
+                      "example": "123456789"
+                    },
+                    "lastname": {
+                      "type": "string",
+                      "example": "Doe"
+                    },
+                    "firstname": {
+                      "type": "string",
+                      "example": "John"
+                    },
+                    "address": {
+                      "type": "object",
+                      "properties": {
+                        "street": {
+                          "type": "string",
+                          "example": "Avenue de l'Europe"
+                        },
+                        "city": {
+                          "type": "string",
+                          "example": "Montpellier"
+                        },
+                        "postalCode": {
+                          "type": "string",
+                          "example": "34000"
+                        },
+                        "country": {
+                          "type": "string",
+                          "example": "France"
+                        }
+                      }
+                    },
+                    "orders": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "example": []
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Client créé avec succès"
+          }
+        }
+      }
+    },
+    "/client/:clientId": {
+      "get": {
+        "description": "Récupérer les détails d'un client",
+        "parameters": [
+          {
+            "name": "clientId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Détails du client récupérés avec succès"
+          }
+        }
+      },
+      "put": {
+        "description": "Mettre à jour les informations d'un client",
+        "parameters": [
+          {
+            "name": "clientId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "fields": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string",
+                      "example": "client1@example.com"
+                    },
+                    "phone": {
+                      "type": "string",
+                      "example": "123456789"
+                    },
+                    "lastname": {
+                      "type": "string",
+                      "example": "Doe"
+                    },
+                    "firstname": {
+                      "type": "string",
+                      "example": "John"
+                    },
+                    "address": {
+                      "type": "object",
+                      "properties": {
+                        "street": {
+                          "type": "string",
+                          "example": "Avenue de l'Europe"
+                        },
+                        "city": {
+                          "type": "string",
+                          "example": "Montpellier"
+                        },
+                        "postalCode": {
+                          "type": "string",
+                          "example": "34000"
+                        },
+                        "country": {
+                          "type": "string",
+                          "example": "France"
+                        }
+                      }
+                    },
+                    "orders": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "example": []
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Informations du client mises à jour avec succès"
+          }
+        }
+      },
+      "delete": {
+        "description": "Supprimer un client",
+        "parameters": [
+          {
+            "name": "clientId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Client supprimé avec succès"
+          }
+        }
+      }
+    },
+    "/order/": {
+      "get": {
+        "description": "Récupérer la liste des commandes",
+        "responses": {
+          "200": {
+            "description": "Liste des commandes récupérée avec succès"
+          }
+        }
+      },
+      "post": {
+        "description": "Créer une nouvelle commande",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "fields": {
+                  "type": "object",
+                  "properties": {
+                    "date": {
+                      "type": "string",
+                      "format": "date",
+                      "example": "2024-09-27"
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": "shipped"
+                    },
+                    "totalAmount": {
+                      "type": "string",
+                      "example": "6"
+                    },
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "product_id": {
+                            "type": "string",
+                            "example": "66dc27b433ee277038ff84e9"
+                          },
+                          "quantity": {
+                            "type": "string",
+                            "example": "1"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Commande créée avec succès"
+          }
+        }
+      }
+    },
+    "/order/:orderId": {
+      "get": {
+        "description": "Récupérer les détails d'une commande",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Détails de la commande récupérés avec succès"
+          }
+        }
+      },
+      "put": {
+        "description": "Mettre à jour une commande",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "fields": {
+                  "type": "object",
+                  "properties": {
+                    "date": {
+                      "type": "string",
+                      "format": "date",
+                      "example": "2024-09-27"
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": "shipped"
+                    },
+                    "totalAmount": {
+                      "type": "string",
+                      "example": "6"
+                    },
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "product_id": {
+                            "type": "string",
+                            "example": "66dc27b433ee277038ff84e9"
+                          },
+                          "quantity": {
+                            "type": "string",
+                            "example": "1"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Commande mise à jour avec succès"
+          }
+        }
+      },
+      "delete": {
+        "description": "Supprimer une commande",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Commande supprimée avec succès"
+          }
+        }
+      }
+    },
+    "/product/": {
+      "get": {
+        "description": "Récupérer la liste des produits",
+        "responses": {
+          "200": {
+            "description": "Liste des produits récupérée avec succès"
+          }
+        }
+      },
+      "post": {
+        "description": "Créer un nouveau produit",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "fields": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "Produit 5"
+                    },
+                    "description": {
+                      "type": "string",
+                      "example": "Un super Produit"
+                    },
+                    "price": {
+                      "type": "number",
+                      "example": 6
+                    },
+                    "stockQuantity": {
+                      "type": "number",
+                      "example": 10
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Produit créé avec succès"
+          }
+        }
+      }
+    },
+    "/product/:productId": {
+      "get": {
+        "description": "Récupérer les détails d'un produit",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Détails du produit récupérés avec succès"
+          }
+        }
+      },
+      "put": {
+        "description": "Mettre à jour un produit",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "fields": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "Produit 5"
+                    },
+                    "description": {
+                      "type": "string",
+                      "example": "Un super Produit"
+                    },
+                    "price": {
+                      "type": "number",
+                      "example": 6
+                    },
+                    "stockQuantity": {
+                      "type": "number",
+                      "example": 10
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Produit mis à jour avec succès"
+          }
+        }
+      },
+      "delete": {
+        "description": "Supprimer un produit",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  }
+}

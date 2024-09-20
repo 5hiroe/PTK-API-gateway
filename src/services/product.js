@@ -1,5 +1,5 @@
 import { apiRequest } from '../helpers/apiRequest.js'
-const productApiUri = process.env.PRODUCT_API_URI
+const productApiUri = process.env.PRODUCT_API_URI;
 
 export default class ProductService {
     /**
